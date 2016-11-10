@@ -8,7 +8,6 @@ obtain the key.
 
 #Authors
 #### Leixiang Wu
-#### Varun Sayal
 
 ## (1) the problem, i.e., what's given and what's wanted for your project
 DistAlgo is a language for distributed algorithms. It is an extension to Python. It makes programming distributed algorithm very easily. However, the DistAlgo lacks security protocol to allow processes communicating securely. For this project, we are going to implement Diffie-Hellman key exchange. We implement a fast way to compute Diffe-Hellman keys and extends DistAlgo to use Diffe-Hellman key exchange protocol to send messages.
