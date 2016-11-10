@@ -20,5 +20,7 @@ In the results I hope to include many different methods to compute this modular 
 
 Sources:
 http://sublimerobots.com/2015/01/simple-diffie-hellman-example-python/
+
 https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/fast-modular-exponentiation
+
 http://crypto.stackexchange.com/questions/1025/can-one-generalize-the-diffie-hellman-key-exchange-to-three-or-more-parties
