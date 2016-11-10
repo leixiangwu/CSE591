@@ -1,29 +1,24 @@
-# CSE591 - Diffie–Hellman key exchange overview
-The Diffie-Hellman key agreement protocol (1976) was the first
-practical method for establishing a shared secret over an unsecured
-communication channel.
-The point is to agree on a key that two parties can use for a
-symmetric encryption, in such a way that an eavesdropper cannot
-obtain the key.
+# CSE591 - Diffie–Hellman key local
+Diffie-Hellman uses the concept of one-way functions to exchange a secret over an unsecure channel in a secure way. That is, two parties can exchange a secret number even in the precence of an almost omnipotent eavesdropper. The transferred key can then be used to cryptographically encrypt messages over the network. The key exchange is a foundation that can be used for instance as the pad in the one-time-pad encryption scheme.
 
 #Authors
 #### Leixiang Wu
 #### Varun Sayal
 
 ## (1) the problem, i.e., what's given and what's wanted for your project
-DistAlgo is a language for distributed algorithms. It is an extension to Python. It makes programming distributed algorithm very easily. However, the DistAlgo lacks security protocol to allow processes communicating securely. For this project, we are going to implement Diffie-Hellman key exchange. We implement a fast way to compute Diffe-Hellman keys and extends DistAlgo to use Diffe-Hellman key exchange protocol to send messages.
+My part of the project would essentially serve as an API to do the one-way function computations needed for the key exchange. In this n-person key exchange at the crucial stage of the key computation we need to compute ~N modular exponentiations. My part of the project would provide API's to compute the appropriate secret value to send to the other parties.
 
 ## (2) the method that you use to solve the problem
-We will use Fast modular exponentiation to compute the DF keys. After each process has a secret number to communicate, we will use DistAlgo to communicate. If we have time, we could use an encryption scheme to actually encrypt the messages that are delivered among processes.
+There is well studied and tested pseudocode to describe what needs to be sent over the network in the key-exchange. And while this logic is cool, the more interesting part is to do the efficient computation of the modular exponentiation needed for Diffie-Hellman. There are interesting properites of binary that will allow for A ^ B % C to be calculated quickly using smaller computations. By incrementalizing this I hope to implement a way for fast modular exponentiation to happen N times.
 
 ## (3) the implementation of the method 
-Use fast modular exponentiation method to compute DF keys efficiently. After that, use DistAlgo to send keys to each other. Then each process can use any encryption schema to encrypts the messages.
+The implementation of the method will be in Python, using the idea presented in source #BLANK. The distributed system stuff will be implemented in DistAlgo.
 
 ## (4) the results, including the runs and tests you performed, with resulting numbers, plots, graphs, etc. Each part should also include brief justifications for why you did what you did.
-We will find some best existing implementations of DF-key computations and protocols. Compare the performances among them. Also, we can replace DF-key computations with different implementations while leaving protocol unchanged. This could evaluate the performance of our DF key computation.
+In the results I hope to include many different methods to compute this modular exponentiation as well as their relative running times. I also hope to include some documentation detailing the ideas behind each specific implementation.
 
 
 Sources:
-https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange
-https://www.cs.utexas.edu/~byoung/cs361/lecture52.pdf
-https://drive.google.com/file/d/0B0MWH8ngLAIFTzFna1lOTTF4UlE/view
+http://sublimerobots.com/2015/01/simple-diffie-hellman-example-python/
+https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/fast-modular-exponentiation
+http://crypto.stackexchange.com/questions/1025/can-one-generalize-the-diffie-hellman-key-exchange-to-three-or-more-parties
