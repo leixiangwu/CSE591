@@ -1,4 +1,4 @@
-# CSE591 - Diffie–Hellman key exchange
+# CSE591 - Diffie–Hellman key exchange overview
 
 ##Authors
 ### Leixiang Wu
