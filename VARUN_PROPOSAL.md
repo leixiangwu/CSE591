@@ -2,7 +2,6 @@
 Diffie-Hellman uses the concept of one-way functions to exchange a secret over an unsecure channel in a secure way. That is, two parties can exchange a secret number even in the precence of an almost omnipotent eavesdropper. The transferred key can then be used to cryptographically encrypt messages over the network. The key exchange is a foundation that can be used for instance as the pad in the one-time-pad encryption scheme.
 
 #Authors
-#### Leixiang Wu
 #### Varun Sayal
 
 ## (1) the problem, i.e., what's given and what's wanted for your project
