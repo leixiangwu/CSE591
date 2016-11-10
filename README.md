@@ -6,7 +6,7 @@ The point is to agree on a key that two parties can use for a
 symmetric encryption, in such a way that an eavesdropper cannot
 obtain the key.
 
-##Authors
+#Authors
 ### Leixiang Wu
 ### Varun Sayal
 
