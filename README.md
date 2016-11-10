@@ -1,4 +1,5 @@
-# CSE591
+# CSE591 - Diffie–Hellman key exchange
+
 ##Authors
 ### Leixiang Wu
 ### Varun Sayal
