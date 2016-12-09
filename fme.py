@@ -103,10 +103,10 @@ start = time.time()
 f = mymodexp(x,e,m)
 print(time.time()-start)
 
-print("###### Naive FME ######")
+"""print("###### Naive FME ######")
 start = time.time()
 a= naivefme(x,e,m)
-print(time.time()-start)
+print(time.time()-start)"""
 
 print("###### FME1 (UMN) ######")
 start = time.time()
@@ -128,7 +128,7 @@ start = time.time()
 e = pow(x,e,m)
 print(time.time()-start)
 
-print(a)
+#print(a)
 print(b)
 print(c)
 print(d)
