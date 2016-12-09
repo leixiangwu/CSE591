@@ -1,0 +1,98 @@
+# 1. A->B: P, G
+# 2. A->B: kap(P, G, Xa)
+# 3. B->A: kap(P, G, Xb)
+# 4. A->B: {one()}kap(P, kap(P, G, Xb), Xa)
+
+# generate a prime base
+def genereate_prime_base():
+    return 3
+
+# generate a prime modolo
+def genereate_prime_modulo():
+    return 883
+
+# generate a secret key
+def genereate_hellman_secret():
+    return 4
+
+# generate a secret key
+def genereate_diffie_secret():
+    return 5
+
+# Encrypt the message using the given secret key
+def encrypt(msg, secret_key):
+    return msg
+
+# Decrypt the message using the given secret key
+def decrypt(msg, secret_key):
+    return msg
+
+def df_cal(base, power, mod):
+    return pow(base, power) % mod
+
+class Diffie(process):
+    def setup(Hellman):
+        self.a = genereate_diffie_secret()
+        self.g = genereate_prime_base()
+        self.p = genereate_prime_modulo()
+        self.s = None
+
+    def send(message, to= None):
+        super().send(message, to = to)
+        output('send', message, 'to', to)
+
+    def receive(msg=("B", B), from_= Hellman):
+        self.s = df_cal(B, self.a, p)
+        output("Diffie's secret key is", self.s)
+
+    def run():
+        # Step 1
+        output("Send g =", g, "and p =", p, "to", Hellman)
+        send(("g_and_p", self.g, self.p), to = Hellman)
+        await(some(received(("received_g_p"), from_ = Hellman)))
+        # Step 1 is done
+
+        # Step 2
+        A = df_cal(g, self.a, p)
+
+        output("Send A =", A, "to", Hellman)
+        send(("A", A), to = Hellman)
+        # Step 2 is done
+        await(False)
+
+class Hellman(process):
+    def setup(Diffie):
+        self.b = genereate_hellman_secret()
+        self.g = None
+        self.p = None
+        self.s = None
+
+    def send(message, to = None):
+        super().send(message, to = to)
+        output('send', message, 'to', to)
+
+    def run():
+        await(False)
+
+    def receive(msg=("g_and_p", g, p), from_ = Diffie):
+        self.g = g
+        self.p = p
+        output("Receiveg g =", g, "and p =", p)
+        send(("received_g_p"), to = Diffie)
+
+    def receive(msg=("A", A), from_ = Diffie):
+        self.s = df_cal(A, self.b, p)
+        output("Hellman's secret key is", self.s)
+        # Step 3
+        B = df_cal(self.g, self.b, self.p)
+        output("Send B =", B, "to", Diffie)
+        send(("B", B), to = Diffie)
+        # Step 3 is done
+
+def main():
+    diffie = new(Diffie)
+    hellman = new(Hellman)
+    setup(diffie, (hellman,))
+    setup(hellman, (diffie,))
+    start(hellman)
+    start(diffie)
