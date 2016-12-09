@@ -10,16 +10,22 @@ obtain the key.
 #### Leixiang Wu
 
 ## (1) the problem, i.e., what's given and what's wanted for your project
-DistAlgo is a language for distributed algorithms. It is an extension to Python. It makes programming distributed algorithm very easily. However, the DistAlgo lacks security protocol to allow processes communicating securely. For this project, we are going to implement Diffie-Hellman key exchange. We implement a fast way to compute Diffe-Hellman keys and extends DistAlgo to use Diffe-Hellman key exchange protocol to send messages.
+DistAlgo is a language for distributed algorithms. It is an extension to Python.
+It makes programming distributed algorithm very easily.
+However, the DistAlgo lacks security protocol to allow processes communicating securely.
+For this project, I am going to implement Diffie-Hellman key exchange.
 
 ## (2) the method that you use to solve the problem
-We will use Fast modular exponentiation to compute the DF keys. After each process has a secret number to communicate, we will use DistAlgo to communicate. If we have time, we could use an encryption scheme to actually encrypt the messages that are delivered among processes.
+I will use DistAlgo to communicate. If we have time, we could use an encryption scheme
+to actually encrypt the messages that are delivered among processes.
 
 ## (3) the implementation of the method 
-Use fast modular exponentiation method to compute DF keys efficiently. After that, use DistAlgo to send keys to each other. Then each process can use any encryption schema to encrypts the messages.
+After that, I will use DistAlgo built-in functions to
+to send keys to each other. I will also implement DH in Erlang.
 
 ## (4) the results, including the runs and tests you performed, with resulting numbers, plots, graphs, etc. Each part should also include brief justifications for why you did what you did.
-We will find some best existing implementations of DF-key computations and protocols. Compare the performances among them. Also, we can replace DF-key computations with different implementations while leaving protocol unchanged. This could evaluate the performance of our DF key computation.
+We will find some best existing implementations of DF-key protocols.
+Compare the performances and clarity among them. 
 
 
 Sources:
